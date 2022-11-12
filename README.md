@@ -4,7 +4,6 @@
   <h3 align="center">Bliss dircolors</h3>
   <p align="center">
     A delicate theme that injects color without overwhelming your workspace.<br>
-    macOS friendly 
   </p>
   <br>
 </p>
@@ -20,7 +19,7 @@
 
 ## About
 
-Bliss dircolors is a theme for the ls command in macOS and Linux, and is made for use with dark theme terminals supporting 256 colors e.g. iTerm2.
+Bliss dircolors is a theme for the `ls` command in macOS and Linux, and is made for use with dark theme terminals supporting 256 colors e.g. iTerm2.
 
 Bliss inspires calmness and tranquil, whilst maintaining readability and visual distinction between elements. It is specifically designed with colors of high value (lightness) and low to intermediate saturation. As a result, the palette's tonal properties invoke a softer look that is easier on your eyes.
 
@@ -37,7 +36,7 @@ Bliss looks even better with the following terminal setup:
 
 ### Color Properties
 
-Bliss has similarities to most [default ls colors](https://askubuntu.com/questions/17299/what-do-the-different-colors-mean-in-ls) where possible; however, some colors differ from the default scheme in order to increase readability.
+Bliss has similarities to most [default `ls` colors](https://askubuntu.com/questions/17299/what-do-the-different-colors-mean-in-ls) where possible; however, some colors differ from the default scheme in order to increase readability.
 
 * Regular file: white
 * Directory: pink, bold
@@ -59,34 +58,11 @@ Bliss has similarities to most [default ls colors](https://askubuntu.com/questio
 
 ## Installation
 
-### Installing GNU coreutils (required for macOS only)
-
-Bliss dircolors is configured using GNU coreutils; however, macOS does not use GNU by default. To use dircolors we are going to need to install GNU coreutils.
-
-1. Install [Homebrew](https://brew.sh/), a free and open-source package manager that simplifies the installation of software on macOS.
-
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-2. Install GNU coreutils using Homebrew.
-
-        brew install coreutils
-
-3. GNU ls, along with other GNU commands in common with [BSD](https://www.freebsd.org/doc/en_US.ISO8859-1/articles/explaining-bsd/article.html) (macOS command line tools), will now be prefixed with a "g". To use GNU ls without the "g" prefix, add the following to your shell config file  (`.bash_profile`, `.zshrc`, etc):
-
-        PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-        MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-        alias ls="ls --color=always"
-
-4. Shell will now be setup to use GNU dircolors for ls.
-
 ### Installing Bliss dircolors
 
-1. Clone the Bliss dircolors repo to stay up to date or use the [download ZIP](https://github.com/joshjon/bliss-dircolors/archive/master.zip) option and unzip the files.
-2. Add the following to your `~/.bash_profile` or `~/.zshrc` to use Bliss dircolors for all future shell sessions.
+Add the following to your `~/.bash_profile` or `~/.zshrc` to use Bliss dircolors for all future shell sessions.
 
-        eval `dircolors ~/<path-to-cloned-repo>/bliss.dircolors`
-
-3. Open a new terminal and you will notice that ls output will have a splash of color! 🌈
+        eval $(dircolors /<path-to-cloned-repo>/bliss.dircolors)
 
 ### Zsh Additional Install Information
 
@@ -108,19 +84,6 @@ Tab completion will now use the color properties in `bliss.dircolors`
 Note: some files will lose their properties after being cloned to your machine. These properties will need to be re-applied accordingly for dircolors to take effect.
 
 ## Troubleshooting
-
-### 'command not found: dircolors' (macOS)
-
-Your coreutils PATH and MANPATH is incorrect and most likely due to a coreutils symlink not created at `/usr/local/opt/coreutils/` upon install.
-
-By default, Homebrew will install all packages at `/usr/local/Cellar/` in all versions of macOS. Therefore, we can set PATH and MANPATH to the following:
-
-```
-PATH="/usr/local/Cellar/coreutils/<your-coreutils-version>/libexec/gnubin:$PATH"
-MANPATH="/usr/local/Cellar/coreutils/<your-coreutils-version>/libexec/gnuman:$MANPATH"
-```
-
-If the issue is still not resolved, locate the coreutils `/gnubin` and `/gnuman` paths on your machine and set PATH and MANPATH accordingly.
 
 ### Zsh commands are not using Bliss dircolors
 
